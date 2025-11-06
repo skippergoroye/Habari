@@ -1,24 +1,44 @@
 "use client";
+import React, { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Search } from "lucide-react";
+import { Form } from "@/components/ui/form";
+import { SearchTermSchema } from "@/lib/schemas";
+import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 
-import { usePathname } from "next/navigation";
 const PathnameDisplay = () => {
-  const pathname = usePathname();
+  const form = useForm<z.infer<typeof SearchTermSchema>>({
+    resolver: zodResolver(SearchTermSchema),
+    defaultValues: {
+      searchTerm: "",
+    },
+  });
 
-  const formattedPathname = pathname?.startsWith("/job-posting")
-    ? "job posting"
-    : pathname?.startsWith("/scheduleinterview")
-    ? "Interviews"
-    : pathname?.startsWith("/cv-screener")
-    ? "CV Screener"
-    : pathname?.replace(/^\//, "").replace(/-/g, " ") || "dashboard";
-    
+  const onSubmit = async (values: z.infer<typeof SearchTermSchema>) => {
+    try {
+    } catch (error) {
+      console.log("error");
+    }
+  };
+
   return (
-    <p className="hidden lg:flex capitalize text-[#001633] font-medium font-rubik text-[24px]">
-      {formattedPathname}
-    </p>
+    <div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="searchTerm"
+            placeholder="Search..."
+            variant="h-[40px] w-full"
+            rightIcon={<Search className="cursor-pointer" />}
+          />
+        </form>
+      </Form>
+    </div>
   );
 };
 
 export default PathnameDisplay;
-
-
