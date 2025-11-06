@@ -79,7 +79,7 @@ export function AppSidebar() {
       <div className="border-r-2 border-black flex flex-col h-full">
         {/* Header with Logo */}
         <SidebarHeader className="p-4 mt-2 flex-shrink-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <div className="flex h-8 w-8 items-center justify-center rounded bg-lime-400 font-bold text-black">B</div>
             <span className="text-lg font-bold text-foreground">rutalism</span>
           </div>
