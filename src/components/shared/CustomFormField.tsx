@@ -60,28 +60,35 @@ interface CustomProps {
   readOnly?: boolean;
   disabledDates?: (date: Date) => boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+   rightIcon?: React.ReactNode;
 }
 
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
   switch (props.fieldType) {
     case FormFieldType.INPUT:
       return (
-        <div className="flex rounded-md border border-dark-500 bg-dark-400">
-          <FormControl>
-            <Input
-              placeholder={props.placeholder}
-              {...field}
-              type={props.type}
-              readOnly={props.readOnly}
-              disabled={props.disabled}
-              className={`${props.variant} text-16 placeholder:text-16 rounded-[5px] border bg-[#F7FCFF] border-bankGradient text-gray-900 placeholder:text-gray-500`}
-              onChange={(e) => {
-                field.onChange(e); 
-                props.onChange?.(e); 
-              }}
-            />
-          </FormControl>
+         <div className="flex items-center rounded-md border border-dark-500 bg-dark-400 relative">
+      <FormControl>
+        <Input
+          placeholder={props.placeholder}
+          {...field}
+          type={props.type}
+          readOnly={props.readOnly}
+          disabled={props.disabled}
+          className={`${props.variant} text-16 placeholder:text-16 rounded-[5px] border bg-[#F7FCFF]  text-gray-900 placeholder:text-gray-500 pr-10`} // add padding for icon
+          onChange={(e) => {
+            field.onChange(e);
+            props.onChange?.(e);
+          }}
+        />
+      </FormControl>
+
+      {props.rightIcon && (
+        <div className="absolute right-3 cursor-pointer">
+          {props.rightIcon}
         </div>
+      )}
+    </div>
       );
 
     case FormFieldType.PHONE_INPUT:

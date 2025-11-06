@@ -1,0 +1,39 @@
+"use client";
+import Image from "next/image";
+import Logo from "../../../../public/images/logo.png";
+import TextBox from "@/components/auth/TextBox";
+import Link from "next/link";
+import { Suspense } from 'react'
+import SignInForm from "./_components/SignInForm";
+
+
+
+const SignIn = () => {
+  return (
+    <div className="mx-auto flex flex-col py-10 px-6 lg:px-16 w-[600px]">
+      <Link href="/">
+        <Image
+          src={Logo}
+          height={1000}
+          width={1000}
+          alt="patient"
+          className="h-10 w-fit"
+        />
+      </Link>
+
+      <div className="mt-20">
+        <TextBox
+          title="Welcome back"
+          description="Login to unlock the power of AI in finding top talent and transforming your hiring process."
+          variant="mt-0 text-center justify-center items-center"
+        />
+        <SignInForm />
+         {/* <Suspense>
+
+         </Suspense> */}
+      </div>
+    </div>
+  );
+};
+
+export default SignIn;
