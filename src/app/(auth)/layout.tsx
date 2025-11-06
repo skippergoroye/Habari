@@ -1,4 +1,4 @@
-import SignInImage from "@/public/pngs/auth/signin-img.png";
+import SignInImage from "../../../public/images/signin-img.png";
 import ImageSection from "@/components/auth/ImageSection";
 
 export default function RootLayout({
