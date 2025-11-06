@@ -28,9 +28,7 @@ const SignIn = () => {
           variant="mt-0 text-center justify-center items-center"
         />
         <SignInForm />
-         {/* <Suspense>
-
-         </Suspense> */}
+      
       </div>
     </div>
   );

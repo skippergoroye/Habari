@@ -19,14 +19,17 @@ const SignInForm = () => {
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
-      work_email: "",
+      email: "",
       password: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof SignInSchema>) => {
     try {
-    } catch (error) {}
+      router.push("/marketing")
+    } catch (error) {
+      console.log("error")
+    }
   };
 
   return (
@@ -36,9 +39,9 @@ const SignInForm = () => {
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
-          name="last_name"
-          label="Last Name"
-          placeholder="Enter your Last Name"
+          name="email"
+          label="Email"
+          placeholder="Enter your email"
           variant="h-[40px] w-full bg-white"
         />
 

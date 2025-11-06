@@ -10,7 +10,7 @@ export const addProductSchema = z.object({
 
 //sign-in
 export const SignInSchema = z.object({
-  work_email: z
+  email: z
     .string()
     .email("Please enter a valid work email address")
     .min(5, "Email must be at least 5 characters long")

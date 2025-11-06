@@ -249,5 +249,77 @@ export const WorkLocation = [ "sjsjsjjs", "shhshshshhs" ]
 
 
 
+// Dashboard
+export const SidebarLinks = [
+  {
+    // imgURL: Dashboard,
+    route: "/dashboard",
+    label: "Dashboard",
+  },
+  {
+    // imgURL: JobAds,
+    route: "/job-posting",
+    label: "Job Posting",
+  },
+  {
+    // imgURL: ScheduleInterview,
+    route: "/scheduleinterview",
+    label: "Interviews",
+  },
+  {
+    // imgURL: CvScreener,
+    route: "/cv-screener",
+    label: "CV Screener",
+    // comment line
+  },
+  {
+    // imgURL: Recruitmnet,
+    route: "/ai-agent",
+    label: "AI Agent",
+  },
+  {
+    // imgURL: Logout,
+    route: "/sign-in",
+    label: "Logout",
+  },
+];
+
+export const SidebarLinksMobile = [
+  {
+    // imgURL: DashboardMobile,
+    route: "/dashboard",
+    label: "Dashboard",
+  },
+  {
+    // imgURL: JobAdsMobile,
+    route: "/job-posting",
+    label: "Job Posting",
+  },
+  {
+    // imgURL: ScheduleInterviewMobile,
+    route: "/scheduleinterview",
+    label: "Scheduled Interviews",
+  },
+  {
+    // imgURL: CvScreenerMobile,
+    route: "/cv-screener",
+    label: "Cv Screener",
+  },
+  {
+    // imgURL: RecruitmnetMobile,
+    route: "/ai-agent",
+    label: "AI Agent",
+  },
+  
+
+  {
+    // imgURL: Logout,
+    route: "/sign-in",
+    label: "Logout",
+  },
+];
+
+
+
 
 

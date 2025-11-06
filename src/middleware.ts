@@ -1,4 +1,5 @@
 // src/middleware.ts
+// In Next.js, Middleware lets you run code before a request is completed — between the request and the response — on the Edge Runtime (very fast, runs close to the user).
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
