@@ -18,7 +18,7 @@ export default function RootLayout({
         </div>
 
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="h-16 w-full flex items-center justify-between  p-5  sm:p-8  border-b-2 border-black bg-[#f5f5f5] z-50">
+          <div className="h-16 w-full flex items-center justify-between  p-5  sm:p-8  border-b-3 border-black bg-[#f5f5f5] z-50">
             <PathnameDisplay />
             <MobileNav />
             <NavProfile />
