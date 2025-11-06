@@ -14,7 +14,7 @@ const data = [
 
 export default function AcquisitionChart() {
   return (
-    <div className="w-full lg:w-[540px] ">
+    <div className="w-full ">
       <div className="border-2 border-black rounded-[6px] p-[21px] bg-white">
         <h2 className="text-lg font-semibold text-gray-800 mb-6">Acquisition vs Cost</h2>
         <ResponsiveContainer width="100%" height={220}>
