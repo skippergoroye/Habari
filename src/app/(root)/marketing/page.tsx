@@ -33,14 +33,15 @@ import MarketingStats from "./_components/marketing-stats";
 import TrafficSource from "./_components/traffic-source";
 import { BudgetByPlatform } from "./_components/budget-by-platform";
 import AcquisitionChart from "./_components/acquisition-chart";
+import MarketingTabs from "./_components/marketing-tabs";
 
 const Marketing = () => {
   return (
     <div className="">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-        <h1 className="text-2xl font-semibold">Marketing</h1>
-        <h1 className="text-2xl font-semibold">Marketing</h1>
+        <h1 className="text-2xl font-bold">Marketing</h1>
+       <MarketingTabs />
       </div>
 
       {/* Top Section */}
