@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { StaticImageData } from "next/image";
 export interface Photo {
   model_name: string;
   model_id: string;
@@ -89,4 +90,16 @@ export interface SubmitButtonProps {
   children: React.ReactNode;
   // clickFn?: () => void;
   clickFn?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+
+
+export interface ImageSectionProps {
+  imageSrc: StaticImageData;
+  altText?: string;
+  containerWidth?: string;
+  imageHeight?: number;
+  imageWidth?: number;
+  className?: string;
+  placeholder?: "blur" | "empty";
 }

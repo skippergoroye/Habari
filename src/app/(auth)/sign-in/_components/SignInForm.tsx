@@ -7,13 +7,12 @@ import { Eye, EyeOff } from "lucide-react";
 import { Form } from "@/components/ui/form";
 import { SignInSchema } from "@/lib/schemas";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 import SubmitButton from "@/components/shared/SubmitButton";
 
 const SignInForm = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [login, { isLoading }] = useLoginMutation();
 
@@ -33,13 +32,7 @@ const SignInForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-10">
-        {/* <CustomInput
-          control={form.control}
-          name="work_email"
-          label="Email Address"
-          placeholder="Enter your company's email"
-          variant="h-[50px]"
-        /> */}
+      
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
