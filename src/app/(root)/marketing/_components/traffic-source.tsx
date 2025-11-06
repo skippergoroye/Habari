@@ -16,9 +16,9 @@ const data = [
 export default function TrafficSource() {
   return (
     <div className="w-full">
-      <Card className="w-[525px]  border-2 border-black rounded-[6px]">
+      <Card className="w-full  border-2 border-black rounded-[6px]">
         <CardHeader>
-          <CardTitle>Traffic Source</CardTitle>
+             <h2 className="text-xl font-bold mb-2">Traffic Source</h2>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>

@@ -2,6 +2,7 @@ import React from "react";
 import MarketingStats from "./_components/marketing-stats";
 import AcquisitionVsCostChart from "./_components/AcquisitionVsCostChart";
 import TrafficSource from "./_components/traffic-source";
+import { BudgetByPlatform } from "./_components/budget-by-platform";
 
 const Marketing = () => {
   return (
@@ -18,7 +19,9 @@ const Marketing = () => {
 
       <div className="flex justify-between gap-5 mt-10">
         <TrafficSource />
-        <TrafficSource />
+       {/* <div className="max-w-2xl mx-auto"> */}
+        <BudgetByPlatform />
+      {/* </div> */}
 
         {/* <AcquisitionVsCostChart /> */}
       </div>
