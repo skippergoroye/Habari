@@ -18,10 +18,10 @@ export default function TrafficSource() {
     <div className="w-full">
       <Card className="w-full  border-2 border-black rounded-[6px]">
         <CardHeader>
-             <h2 className="text-xl font-bold mb-2">Traffic Source</h2>
+             <h2 className="text-xl font-bold mb-1">Traffic Source</h2>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={255}>
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="0" stroke="#e5e7eb" />
               <XAxis dataKey="date" />
