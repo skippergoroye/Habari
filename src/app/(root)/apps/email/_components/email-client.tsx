@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronLeft, ChevronRight, Inbox, Star, Send, AlertCircle, FileText, Trash, Pencil, Tag } from "lucide-react";
+import { ChevronLeft, ChevronRight, Inbox, Star, Send, AlertCircle, FileText, Trash, Pencil, Tag, RotateCcw } from "lucide-react";
 import Avatar from "../../../../../../public/images/avater.jpg";
 import Image from "next/image";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Search } from "lucide-react";
+import { Form } from "@/components/ui/form";
+import { SearchTermSchema } from "@/lib/schemas";
+import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 
 interface Email {
   id: number;
@@ -183,6 +190,21 @@ export default function EmailClient() {
     setSelectedEmails(newSelected);
   };
 
+
+   const form = useForm<z.infer<typeof SearchTermSchema>>({
+      resolver: zodResolver(SearchTermSchema),
+      defaultValues: {
+        searchTerm: "",
+      },
+    });
+  
+    const onSubmit = async (values: z.infer<typeof SearchTermSchema>) => {
+      try {
+      } catch (error) {
+        console.log("error");
+      }
+    };
+
   return (
     <div className="flex  h-full bg-background p-10 border-2 border-black">
       {/* Sidebar */}
@@ -235,7 +257,7 @@ export default function EmailClient() {
                   key={label}
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-foreground hover:bg-secondary transition-colors"
                 >
-                  <Tag className="h-4 w-4 text-muted-foreground" /> 
+                  <Tag className="h-4 w-4 text-black" /> 
                   <span>{label}</span>
                 </button>
               ))}
@@ -250,25 +272,36 @@ export default function EmailClient() {
         <div className="border-b border-border px-8 py-4 flex items-center justify-between flex-shrink-0">
           <h1 className="text-2xl font-semibold text-foreground">Inbox</h1>
           <div className="flex items-center gap-2">
-            <Input type="text" placeholder="Search..." className="w-48 h-10" />
+            <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="searchTerm"
+                        placeholder="Search..."
+                        variant="h-[40px] w-full"
+                       
+                      />
+                    </form>
+                  </Form>
           </div>
         </div>
 
         {/* Pagination */}
         <div className="border-b border-border px-8 py-3 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-2">
-            <Checkbox />
+            <Checkbox className="border border-black" />
             <button className="hover:bg-secondary p-1 rounded">
-              <span className="text-muted-foreground">◯</span>
+               <RotateCcw  />
             </button>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">1-15 of 165</span>
+            <span className="text-sm text-black font-semibold">1-15 of 165</span>
             <div className="flex gap-2">
               <Button
                 variant="outline"
                 size="sm"
-                className="w-8 h-8 p-0 bg-transparent"
+                className="w-8 h-8 p-0 bg-transparent rounded-full border-1 border-black"
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -276,7 +309,7 @@ export default function EmailClient() {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-8 h-8 p-0 bg-transparent"
+                className="w-8 h-8 p-0 bg-transparent rounded-full border-1 border-black"
                 onClick={() => setCurrentPage(currentPage + 1)}
               >
                 <ChevronRight className="w-4 h-4" />
@@ -291,7 +324,7 @@ export default function EmailClient() {
             {emailData.map((email, index) => (
               <div key={email.id} className={`border-b border-border ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
                 <div className="px-8 py-4 flex items-center gap-4 hover:bg-gray-100 transition-colors cursor-pointer">
-                  <Checkbox checked={selectedEmails.has(email.id)} onChange={() => toggleEmail(email.id)} />
+                  <Checkbox className="border border-black" checked={selectedEmails.has(email.id)} onChange={() => toggleEmail(email.id)} />
                   <button
                     className="flex-shrink-0 text-lg hover:scale-125 transition-transform"
                     onClick={() => toggleEmail(email.id)}
