@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -59,11 +59,25 @@ export default function EmailClient() {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   // Call API with debounced value
-  const { data, isLoading, isError, isFetching, refetch } = useFetchCharactersQuery({
-    page: currentPage,
-    name: debouncedSearchTerm || undefined,
-    status: statusFilter || undefined,
-  });
+  // const { data, isLoading, isError, isFetching, refetch } = useFetchCharactersQuery({
+  //   page: currentPage,
+  //   name: debouncedSearchTerm || undefined,
+  //   status: statusFilter || undefined,
+  // });
+
+
+  // memoize the query argument object to prevent re-fetching due to object identity changes (especially since this EmailClient component is large and renders lists).
+
+  const queryArgs = useMemo(
+    () => ({
+      page: currentPage,
+      name: debouncedSearchTerm || undefined,
+      status: statusFilter || undefined,
+    }),
+    [currentPage, debouncedSearchTerm, statusFilter]
+  );
+
+  const { data, isLoading, isError, isFetching, refetch } = useFetchCharactersQuery(queryArgs);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -149,37 +163,32 @@ export default function EmailClient() {
         <div className="border-b px-4 md:px-8 py-3 flex items-center justify-between">
           <h1 className="text-xl font-semibold">Inbox</h1>
 
-
-
           <div className="flex gap-2">
             {/* Search */}
-          <Form {...form}>
-            <form className="space-y-0">
-              <CustomFormField
-                fieldType={FormFieldType.INPUT}
-                control={form.control}
-                name="searchTerm"
-                placeholder="Search characters..."
-                variant="h-[40px] w-full"
-              />
-            </form>
-          </Form>
+            <Form {...form}>
+              <form className="space-y-0">
+                <CustomFormField
+                  fieldType={FormFieldType.INPUT}
+                  control={form.control}
+                  name="searchTerm"
+                  placeholder="Search characters..."
+                  variant="h-[40px] w-full"
+                />
+              </form>
+            </Form>
 
-          {/* Filter Dropdown */}
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="border  rounded-md  p-2 text-sm bg-white cursor-pointer"
-          >
-            <option value="">All Status</option>
-            <option value="alive">Alive</option>
-            <option value="dead">Dead</option>
-            <option value="unknown">Unknown</option>
-          </select>
-
+            {/* Filter Dropdown */}
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="border  rounded-md  p-2 text-sm bg-white cursor-pointer"
+            >
+              <option value="">All Status</option>
+              <option value="alive">Alive</option>
+              <option value="dead">Dead</option>
+              <option value="unknown">Unknown</option>
+            </select>
           </div>
-
-          
         </div>
 
         {/* Pagination Controls */}
