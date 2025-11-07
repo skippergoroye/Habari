@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronLeft, ChevronRight, Inbox, Star, Send, AlertCircle, FileText, Trash, Pencil } from "lucide-react";
+import { ChevronLeft, ChevronRight, Inbox, Star, Send, AlertCircle, FileText, Trash, Pencil, Tag } from "lucide-react";
 import Avatar from "../../../../../../public/images/avater.jpg";
 import Image from "next/image";
 
@@ -235,7 +235,7 @@ export default function EmailClient() {
                   key={label}
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-foreground hover:bg-secondary transition-colors"
                 >
-                  <span className="text-muted-foreground">🏷️</span>
+                  <Tag className="h-4 w-4 text-muted-foreground" /> 
                   <span>{label}</span>
                 </button>
               ))}
