@@ -44,7 +44,7 @@ export default function EmailClient() {
   const [selectedEmails, setSelectedEmails] = useState<Set<number>>(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("");
 
   // From your form
   const form = useForm<z.infer<typeof SearchTermSchema>>({
@@ -59,15 +59,15 @@ export default function EmailClient() {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   // Call API with debounced value
-  const { data, isLoading, isError, isFetching,  refetch } = useFetchCharactersQuery({
+  const { data, isLoading, isError, isFetching, refetch } = useFetchCharactersQuery({
     page: currentPage,
-    name: debouncedSearchTerm || undefined, // The Rick & Morty API supports `?name=...`
+    name: debouncedSearchTerm || undefined,
+    status: statusFilter || undefined,
   });
 
-
   useEffect(() => {
-  setCurrentPage(1);
-}, [debouncedSearchTerm]);
+    setCurrentPage(1);
+  }, [debouncedSearchTerm, statusFilter]);
 
   const toggleEmail = (id: number) => {
     const newSelected = new Set(selectedEmails);
@@ -149,7 +149,10 @@ export default function EmailClient() {
         <div className="border-b px-4 md:px-8 py-3 flex items-center justify-between">
           <h1 className="text-xl font-semibold">Inbox</h1>
 
-          {/* Search */}
+
+
+          <div className="flex gap-2">
+            {/* Search */}
           <Form {...form}>
             <form className="space-y-0">
               <CustomFormField
@@ -161,6 +164,22 @@ export default function EmailClient() {
               />
             </form>
           </Form>
+
+          {/* Filter Dropdown */}
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="border  rounded-md  p-2 text-sm bg-white cursor-pointer"
+          >
+            <option value="">All Status</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+
+          </div>
+
+          
         </div>
 
         {/* Pagination Controls */}
