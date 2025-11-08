@@ -90,7 +90,7 @@ export default function MobileNav() {
             size="icon"
             className="flex items-center justify-center"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-10 w-10" />
           </Button>
         </SheetTrigger>
 

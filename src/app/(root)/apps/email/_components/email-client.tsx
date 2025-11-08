@@ -163,8 +163,8 @@ export default function EmailClient() {
 
       <main className="flex-1 flex flex-col overflow-hidden md:ml-10">
         {/* Header */}
-        <div className="border-b px-4 md:px-8 py-3 flex items-center justify-between">
-          <h1 className="text-xl font-semibold">Inbox</h1>
+        <div className="border-b px-4 md:px-8 py-3 flex flex-col lg:flex-row items-start justify-between">
+          <h1 className="text-xl font-semibold mb-2 lg:mb-0">Inbox</h1>
 
           <div className="flex gap-2">
             {/* Search */}
