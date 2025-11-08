@@ -51,7 +51,7 @@ npm start
 
 - **Redux Toolkit Query**: Provides automatic caching, request deduplication, and background refetching, but adds bundle size and complexity compared to simpler data fetching solutions.
 - **Client-side State Management**: Using Redux toolkit for global state management alongside Next.js App Router. This provides predictable state updates but requires client components, limiting the use of server components in some areas.
-- **API Base URL**: Currently hardcoded in `apiSlice.ts` (using Rick and Morty API as example). The environment variable pattern is commented out and should be configured for production.
+- **API Base URL**: Currently hardcoded in `apiSlice.ts` (using Rick and Morty API as example)-[https://rickandmortyapi.com/]. The environment variable pattern is commented out and should be configured for production.
 - **Middleware on Edge Runtime**: Fast response times with redirects, but limited to Edge-compatible APIs and cannot access Node.js APIs.
 
 ### Performance Decisions
