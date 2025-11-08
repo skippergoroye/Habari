@@ -26,12 +26,13 @@ const SignInForm = () => {
 
   const onSubmit = async (values: z.infer<typeof SignInSchema>) => {
     try {
-      router.push("/marketing")
-       ToastNotification({
+         ToastNotification({
         title: "Successful",
         description: "Login SUccessfully",
         type: "success",
       });
+      router.push("/marketing")
+    
       console.log(values)
     } catch (error) {
       console.log(error)

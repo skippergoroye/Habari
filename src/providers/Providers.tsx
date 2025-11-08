@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "sonner";
 import ReduxProvider from "@/redux/ReduxProvider";
 import { RefetchProvider } from "@/context/RefetchContext";
 
@@ -7,6 +8,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <ReduxProvider>
       <RefetchProvider>
        {children}
+       <Toaster position="top-right" richColors />
       </RefetchProvider>
     </ReduxProvider>
   );
