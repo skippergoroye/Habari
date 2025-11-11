@@ -12,7 +12,7 @@ const SignUp = () => {
         <Image src={Logo} height={1000} width={1000} alt="patient" className="h-10 w-fit" />
       </Link>
 
-      <div className="mt-20">
+      <div className="mt-10">
         <TextBox
           title="Welcome back"
           description="Sign up to explore an email dashboard with search, filters, and pagination — optimized with lazy loading, debounced search, and client-side caching for fast browsing."
