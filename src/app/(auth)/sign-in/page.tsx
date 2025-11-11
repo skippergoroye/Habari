@@ -22,10 +22,10 @@ const SignIn = () => {
 
       <div className="mt-20">
         <TextBox
-          title="Welcome back"
-          description="Login to unlock the power of AI in finding top talent and transforming your hiring process."
-          variant="mt-0 text-center justify-center items-center"
-        />
+  title="Welcome back"
+  description="Sign up to access a smart email dashboard with fast search, filters, and caching."
+  variant="mt-0 text-center justify-center items-center"
+/>
         <SignInForm />
       
       </div>

@@ -12,12 +12,12 @@ const SignUp = () => {
         <Image src={Logo} height={1000} width={1000} alt="patient" className="h-10 w-fit" />
       </Link>
 
-      <div className="mt-10">
-        <TextBox
-          title="Welcome back"
-          description="Sign up to explore an email dashboard with search, filters, and pagination — optimized with lazy loading, debounced search, and client-side caching for fast browsing."
-          variant="mt-0 text-center justify-center items-center"
-        />
+      <div className="mt-16">
+       <TextBox
+  title="Welcome back"
+  description="Sign up to access a smart email dashboard with fast search, filters, and caching."
+  variant="mt-0 text-center justify-center items-center"
+/>
 
         <SignUpForm />
       </div>
