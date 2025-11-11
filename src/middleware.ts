@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
 
   // If user visits the root ("/"), redirect to "/sign-in"
   if (pathname === "/") {
-    return NextResponse.redirect(new URL("/sign-in", req.url));
+    return NextResponse.redirect(new URL("/sign-up", req.url));
   }
 
   // Otherwise, allow everything else

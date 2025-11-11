@@ -11,7 +11,29 @@ export const emailApi = apiSlice.injectEndpoints({
         params: { page, name, status, gender },
       }),
     }),
+
+    fetchEmails: builder.query<any, { 
+      page?: number; 
+      limit?: number; 
+      view?: string; 
+      labels?: string; 
+      search?: string; 
+      dateFrom?: string; 
+      dateTo?: string;
+    }>({
+      query: ({ page = 1, limit = 15, view, labels, search, dateFrom, dateTo }) => ({
+        url: "/emails", // ✅ Correct endpoint
+        params: { page, limit, view, labels, search, dateFrom, dateTo },
+      }),
+    
+    }),
+  
+
+  
+
+
+   
   }),
 });
 
-export const { useFetchCharactersQuery } = emailApi;
+export const {  useFetchEmailsQuery, useFetchCharactersQuery } = emailApi;

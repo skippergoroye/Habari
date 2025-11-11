@@ -1,6 +1,5 @@
 // features/auth/authSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { authApi } from "./authApi";
 
 interface AuthState {
   token: string | null;
@@ -68,34 +67,6 @@ export const authSlice = createSlice({
         sessionStorage.removeItem("persist:auth");
       }
     },
-  },
-  extraReducers: (builder) => {
-    // Add authApi response handling
-    builder.addMatcher(
-      authApi.endpoints.login.matchFulfilled,
-      (state, { payload }) => {
-        if (payload.token) {
-          state.token = payload.token;
-        }
-        if (payload.user) {
-          state.user = payload.user;
-        }
-      }
-    );
-    builder.addMatcher(
-      authApi.endpoints.confirm2FA.matchFulfilled,
-      (state, { payload }) => {
-        if (payload.token) {
-          state.token = payload.token;
-          state.otp = null; // Clear OTP data after successful confirmation
-        }
-      }
-    );
-    builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
-      state.token = null;
-      state.user = null;
-      state.otp = null;
-    });
   },
 });
 

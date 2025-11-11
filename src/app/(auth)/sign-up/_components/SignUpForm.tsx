@@ -6,38 +6,43 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { Form } from "@/components/ui/form";
-import { SignInSchema } from "@/lib/schemas";
+import { SignUpSchema } from "@/lib/schemas";
 import { useRouter } from "next/navigation";
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 import SubmitButton from "@/components/shared/SubmitButton";
 import ToastNotification from "@/components/shared/ToastNotification";
-import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { useSignUpMutation } from "@/redux/features/auth/authApi";
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [login, { isLoading }] = useLoginMutation();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
-  const form = useForm<z.infer<typeof SignInSchema>>({
-    resolver: zodResolver(SignInSchema),
+  const form = useForm<z.infer<typeof SignUpSchema>>({
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof SignInSchema>) => {
+  const onSubmit = async (values: z.infer<typeof SignUpSchema>) => {
     try {
-      const res = await login(values).unwrap();
+      const payload = {
+        ...values,
+        role: "user",
+      };
+
+      const res = await signUp(payload).unwrap();
 
       ToastNotification({
         title: "Successful",
         description: res?.message,
         type: "success",
       });
-      router.push("/marketing");
 
-      console.log(values);
+      router.push("/sign-in");
     } catch (error: any) {
       ToastNotification({
         title: "Error",
@@ -51,6 +56,15 @@ const SignInForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-10">
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="name"
+          label="Full Name"
+          placeholder="Enter your full name"
+          variant="h-[40px] w-full bg-white"
+        />
+
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
@@ -81,16 +95,16 @@ const SignInForm = () => {
           Forgot password?&nbsp;
           <span className="text-main-600">Reset Password </span>
         </p>
-        <SubmitButton isLoading={isLoading} loadingText="Logging In..." className="w-full h-[50px] mt-2 cursor-pointer">
+        <SubmitButton isLoading={isLoading} loadingText="Signing Up..." className="w-full h-[50px] mt-2 cursor-pointer">
           Submit
         </SubmitButton>
       </form>
-      <p onClick={() => router.push("/sign-up")} className="text-center cursor-pointer mt-4 font-jakarta text-base">
+      <p onClick={() => router.push("/sign-in")} className="text-center cursor-pointer mt-4 font-jakarta text-base">
         Don’t have an account?&nbsp;
-        <span className="text-main-600">Sign Up</span>
+        <span className="text-main-600">Sign In</span>
       </p>
     </Form>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

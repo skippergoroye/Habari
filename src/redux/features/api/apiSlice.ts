@@ -6,7 +6,8 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     // baseUrl: process.env.BASE_URL,
-    baseUrl: "https://rickandmortyapi.com/api",
+    // baseUrl: "https://rickandmortyapi.com/api",
+    baseUrl: "https://email-list-api-4.onrender.com/api",
     prepareHeaders: (headers, {getState}) => {
 
       const token = (getState() as RootState).auth?.token;

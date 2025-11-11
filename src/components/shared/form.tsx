@@ -4,12 +4,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form } from "@/components/ui/form";
-import CustomFormField, {
-  FormFieldType,
-} from "@/components/shared/CustomFormField";
+import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 import SubmitButton from "@/components/shared/SubmitButton";
 import { SelectItem } from "@/components/ui/select";
-import { WorkLocation } from '@/constants';
+import { WorkLocation } from "@/constants";
 
 const ProfileSchema = z.object({
   first_name: z.string(),
@@ -95,22 +93,22 @@ const FormData = () => {
           />
 
           <div className="mt-6 flex gap-4">
-                        <SubmitButton
-                          // clickFn={cancelModal}
-                          loadingText="Cancelling..."
-                          className="w-[150px] h-[50px] text-md cursor-pointer border border-primary hover:bg-white bg-white text-primary"
-                        >
-                          Cancel
-                        </SubmitButton>
-          
-                        <SubmitButton
-                          loadingText="Deleting..."
-                          // clickFn={handleDelete}
-                          className="w-[300px] h-[50px] text-md cursor-pointer bg-red-700 hover:bg-red-700 text-white"
-                        >
-                          Yes, Delete
-                        </SubmitButton>
-                      </div>
+            <SubmitButton
+              // clickFn={cancelModal}
+              loadingText="Cancelling..."
+              className="w-[150px] h-[50px] text-md cursor-pointer border border-primary hover:bg-white bg-white text-primary"
+            >
+              Cancel
+            </SubmitButton>
+
+            <SubmitButton
+              loadingText="Deleting..."
+              // clickFn={handleDelete}
+              className="w-[300px] h-[50px] text-md cursor-pointer bg-red-700 hover:bg-red-700 text-white"
+            >
+              Yes, Delete
+            </SubmitButton>
+          </div>
         </form>
       </Form>
     </div>
@@ -118,4 +116,3 @@ const FormData = () => {
 };
 
 export default FormData;
-
