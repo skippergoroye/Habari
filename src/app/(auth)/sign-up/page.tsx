@@ -7,7 +7,7 @@ import SignUpForm from "./_components/SignUpForm";
 
 const SignUp = () => {
   return (
-    <div className="mx-auto flex flex-col py-10 px-6 lg:px-16 w-[600px]">
+    <div className="mx-auto flex flex-col items-start justify-center py-10 px-6 lg:px-16 w-[600px]">
       <Link href="/">
         <Image src={Logo} height={1000} width={1000} alt="patient" className="h-10 w-fit" />
       </Link>

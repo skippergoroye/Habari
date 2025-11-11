@@ -9,7 +9,7 @@ import SignInForm from "./_components/SignInForm";
 
 const SignIn = () => {
   return (
-    <div className="mx-auto flex flex-col py-10 px-6 lg:px-16 w-[600px]">
+    <div className="mx-auto flex flex-col items-start justify-center py-10 px-6 lg:px-16 w-[600px]">
       <Link href="/">
         <Image
           src={Logo}
